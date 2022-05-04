@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Occurence of letter</title>
+    </head>
+    <body>
+        <h1>Occurance of letter <span id="specific-letter"></span> in <span id="whole-string"></span> is:</h1>
+        <p id="occur-no" style="font-size: larger;"></p>
+        <script>
+          var str=prompt("Enter string."); 
+          var let=prompt("Enter the letter to check in that string");
+          var number=occur_let(str,let);
+          function occur_let(string,letter){
+              var l_count=0;
+              for(var i=0;i<string.length;i++){
+                   if(string.charAt(i)==letter)
+                   {
+                     l_count++;
+                   }
+            }
+           return(count);
+          }
+          document.getElementById("specific-letter").innerHTML = let;
+          document.getElementById("whole-string").innerHTML = str;
+          document.getElementById("occur-no").innerHTML = number;
+
+        </script>
+   </body>
+</html>

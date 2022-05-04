@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Array implementation</title>
+    </head>
+    <body>
+        <script>
+            var string=prompt("Enter words seperated by commas ");
+            var str_array = string.split(",");
+
+            console.log("The pop() method: " + str_array.pop());
+            str_array.push("e")
+            console.log("Pushed element using push() method: "+ str_array);
+            console.log("Using toString() method: "+ str_array.toString());
+            console.log("Shifted element using shift() method: "+ str_array.shift());
+            str_array.unshift("i");
+            console.log("Unshifted element using unshift() method: "+ str_array);
+            console.log("Shifted element using shift() method: "+ str_array.join("-"));
+    </script>
+    </body>
+</html>
