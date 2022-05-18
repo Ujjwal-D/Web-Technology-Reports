@@ -1,0 +1,281 @@
+<html>
+    <head>
+        <title>Form Validation</title>
+ 
+    </head>
+    <style type="text/css">
+        .parent--div{
+            position: fixed;
+            top:25%;
+            left:40%;
+            height: 500px;
+            width: 500px;
+            border: 3px solid red;
+            border-radius: 5rem;
+            box-sizing: border-box; 
+            background:linear-gradient(to right,  #f12711 , #f5af19);
+        }
+        #parent__title{
+            position: absolute;
+            font-family: cursive;
+            left: 35%;
+        }
+        span:hover{
+             color:#46188C;
+             transition: color 1s;
+        }
+        #letter__sign{
+            font-weight: 1000;
+            font-size:larger;
+        }
+        #letter__up{
+            font-weight: 550;
+            font-style: bold;
+            font-family:cursive;
+        }
+        input{
+            outline: none;
+            padding-right: 5px;
+            padding-left: 5px;
+            padding-top: 5px;
+        }
+        .user{
+            color:aqua;
+            font-family: cursive;
+            font-size:x-large;
+        }
+        .user--name{
+            position: absolute;
+            top: 20%;
+            left: 10%;
+        }
+        .user--name input{
+            margin-left: 45px;
+            border: 2px solid #46188C;
+            border-radius: 20px;
+        }
+        .user--email{
+            position: absolute;
+            top: 30%;
+            left: 10%;
+        }
+        .user--email input{
+            margin-left: 79px;
+            border: 2px solid #46188C;
+            border-radius: 20px;
+        }
+        .user--password{
+            position: absolute;
+            top: 40%;
+            left: 10%;
+        }
+        .user--password input{
+            margin-left: 50px;
+            border: 2px solid #46188C;
+            border-radius: 20px;
+        }
+        .user--repassword{
+            position: absolute;
+            top: 50%;
+            left: 10%;
+        }
+        .user--repassword input{
+            margin-left: 25px;
+            border: 2px solid #46188C;
+            border-radius: 20px;
+        }
+        .user--phone{
+            position: absolute;
+            top: 60%;
+            left: 10%;
+        }
+        .user--phone input{
+            margin-left: 15px;
+            border: 2px solid #46188C;
+            border-radius: 20px;
+        }
+        .button{
+            position: absolute;
+            display: inline-block;
+            margin-left: 15%;
+            top: 80%;
+            left: 10%;
+        }
+        .submit__button:hover{
+            border: 2px solid #46188C;
+            background-color: aqua;
+            transform: scale(1.2);
+            transition: transform 1s;
+        }
+        .reset__button:hover{
+            border: 2px solid #46188C;
+            background-color: aqua;
+            transform: scale(1.2);
+            transition: transform 1s;     
+        }
+        .submit__button{
+            margin-left: 20px;
+            padding-top: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 5px;
+            border-radius: 20px;
+        }
+        .reset__button{
+            margin-left: 20px;
+            padding-top: 5px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 5px;
+            border-radius: 20px;
+        }
+    </style>
+    <body>
+        <form method="post">
+        <div class="parent--div">
+            <h1 id="parent__title"><span id="letter__sign">Sign</span><span id="letter__up">Up</span></h1>
+            <div class="user user--name">
+                <label for="name">Username*: </label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="user user--email">
+                <label for="email">Email*: </label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="user user--password">
+                <label for="pass">Password*: </label>
+                <input type="password" name="password" id="pass">
+            </div>
+            <div class="user user--repassword">
+                <label for="repass">Re-password*: </label>
+                <input type="password" name="repassword" id="repass">
+            </div>
+            <div class="user user--phone">
+            <label for="phone-number">Phone number*: </label>
+            <input type="number" name="phone" id="phone-number">
+            </div>
+            <div class="button action--button">
+                <button class="submit__button" type="submit" value="submit">Submit</button>
+                <button class="reset__button" type="reset" value="reset">Reset</button>
+            </div>
+        </div>
+        </form>
+
+        <script>
+            document.getElementById("name").onblur= validateName;
+           function validateName() {
+                 var name = document.getElementById("name").value;
+                 if (name == "") {
+                     alert("Name cannot be empty");
+                     return false;
+                }
+                 else {
+                     if(name.length>=3 && name.length<=20) {
+                     var pos = name.search(/^[a-zA-Z0-9]{3,20}$/);
+                    if (pos == -1) {
+                        alert("Sorry!Not a valid name.");
+                        return false;
+                   } 
+                   else {
+                    return true;
+                   }
+                }
+                   else{
+                       alert("Name with 3-20 characters makes sense.");
+                       return false;
+                   }
+ 
+        }
+      }
+ 
+     document.getElementById("email").onblur= validatemail;
+    function validatemail() {
+         var email= document.getElementById("email").value;
+            if (email== "") {
+                alert("Email cannot be empty");
+                return false;
+            }
+             else {
+               var pos = email.search(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+              if (pos == -1) {
+                alert("Sorry! Not a valid email.");
+                return false;
+            } 
+             else {
+              return true;
+            } 
+        }
+    }
+    document.getElementById("pass").onblur= validatepassword;
+        function validatepassword() {
+         var password= document.getElementById("pass").value;
+            if (password== "") {
+              alert("Password cannot be empty");
+              return false;
+            }
+             else {
+                 if(password.length>=8 && password.length<=15) { 
+                   var pos = password.search(/^[a-zA-Z0-9]{8,15}$/);
+                   if (pos == -1) {
+                     alert("Sorry!Your password is not valid.");
+                     return false;
+                    } 
+                   else {
+                    console.log("Your password is valid.");
+                    return true;
+                    }
+                }  
+                 else{
+                    alert("Your password must contaion 8 to 15 characters.");
+                    return false;
+                } 
+            }
+        }
+    document.getElementById("repass").onblur= validaterepassword;
+    function validaterepassword() {
+        var password= document.getElementById("pass").value;
+         var repasssword= document.getElementById("repass").value;
+        if(password=="")
+        {
+            alert("You must re-enter your password(This section can't be empty.)");
+        }
+        else if(repasssword=="")
+        {
+            alert("You must enter this field to continue.)");
+            return false;
+        }
+        else{
+            if(password.localeCompare(repasssword)==0)
+            {
+                console.log("Password matched.");
+            }
+            else{
+                console.log("Password didn't match.");
+            }
+        }
+    } 
+    document.getElementById("phone-number").onblur= validatenumber;
+    function validatenumber(){  
+        var number= document.getElementById("phone-number").value; 
+        if(number==""){
+            alert("Number section can't be empty.");
+        }
+        else{
+           if(number.length==10){
+              var position=number.search(/^(98\d{8})$/);
+              if(position==0){
+                  console.log("Number validated.");
+                }
+              else{
+                    alert("Enter valid phone number.");
+                }
+            }
+            else{
+              alert("Phone number must be of 10 digits.");
+              
+           }   
+       }
+    }
+    </script>
+</body>
+</html>
